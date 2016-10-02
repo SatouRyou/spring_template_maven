@@ -1,0 +1,25 @@
+# 基本的にはdatasourceのみ記載するが、
+# DBを二つ以上使用する際に、参照先を指定する際に使用するので、
+# -で別名で設定する
+datasource-SpringDB:
+    # 使用するDBのアドレス
+    url: jdbc:mysql://localhost/SpringDB
+    # DBのUserName
+    username: db_user
+    # DBのパスワード
+    password: db_password
+    # 使用するDBドライバ
+    driverClassName: com.postgresql.jdbc.Driver
+    # 下記の設定でネットワークが切れた場合でも自動で再接続になる
+    # Connectionが有効かチェックするSQLを指定する
+    validationQuery: select top 1 * from Test
+    # Connection取得時に上記validationQueryを使って有効性チェックを行うか
+    testOnBorrow: true
+
+datasource-SpringDB2:
+    url: jdbc:mysql://localhost/SpringDB2
+    username: db_user
+    password: db_password
+    driverClassName: com.postgresql.jdbc.Driver
+    validationQuery: select top 1 * from Test
+    testOnBorrow: true

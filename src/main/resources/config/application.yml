@@ -1,0 +1,34 @@
+# 設定できる内容は下記を参照すること
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+# ここに記載された設定がプトジェクトのデフォルトの設定となる
+# ここにapplication-〇〇の設定を適用されると、設定が追加され、
+# 同じ対象への設定が存在した場合、オーバーライドされる
+
+# 下記の書き方でapplication-dev.ymlファイルが適用される
+spring:
+    profiles:
+        active: dev
+    # thymeleafのキャッシュを有効かさせるか
+    thymeleaf:
+        cache: false
+
+# Tomcatに対する設定を記載
+server:
+    # ポート番号の指定
+    port: 8080
+
+# JPAの設定
+jpa:
+    database-platform: org.hibernate.dialect.
+    # デフォルトの設定だと毎回DBの再構築を行いデータが消えてしまうので、
+    # 下記の設定を記載(何もしない設定なので本番向き)
+    hibernate:
+          ddl-auto: none
+
+# ヘルスチェック用の設定
+# 下記の設定でport8081の/managementというコンテキストパスにactuatorが稼働する
+management:
+    contextPath: /management
+    port: 8081
+    security.enabled: false
