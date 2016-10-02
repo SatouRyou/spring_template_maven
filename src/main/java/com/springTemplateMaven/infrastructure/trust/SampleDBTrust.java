@@ -26,7 +26,7 @@ public class SampleDBTrust implements SampleTrust {
         List<EmpDto> empDtos = new ArrayList<EmpDto>();
         for ( CustomerEntity customerEntity : customerEntities ) {
             EmpDto empDto = new EmpDto();
-            BeanUtils.copyProperties( customerEntity, new EmpDto() );
+            BeanUtils.copyProperties( customerEntity, empDto );
             empDtos.add( empDto );
         }
         return  empDtos;
@@ -35,7 +35,7 @@ public class SampleDBTrust implements SampleTrust {
     public EmpDto get( int id ) {
         CustomerEntity customerEntity = this.customerRepository.findOne( id );
         EmpDto empDto = new EmpDto();
-        BeanUtils.copyProperties( customerEntity, new EmpDto() );
+        BeanUtils.copyProperties( customerEntity, empDto );
         return  empDto;
     }
 
