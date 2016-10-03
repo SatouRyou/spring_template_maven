@@ -20,11 +20,15 @@ server:
 
 # JPAの設定
 jpa:
-    database-platform: org.hibernate.dialect.
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     # デフォルトの設定だと毎回DBの再構築を行いデータが消えてしまうので、
     # 下記の設定を記載(何もしない設定なので本番向き)
     hibernate:
-          ddl-auto: none
+        ddl-auto: none
+        naming:
+            # JPAはデフォルトで名称をスネークケースに変更してしまう
+            # 以下の設定を実装することで、キャメルケースで設定できるようになる
+            strategy: org.hibernate.cfg.EJB3NamingStrategy
 
 # ヘルスチェック用の設定
 # 下記の設定でport8081の/managementというコンテキストパスにactuatorが稼働する
