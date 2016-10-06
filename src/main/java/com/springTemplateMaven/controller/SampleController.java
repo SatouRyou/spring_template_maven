@@ -4,6 +4,7 @@ import com.springTemplateMaven.domain.dto.EmpDto;
 import com.springTemplateMaven.domain.service.SampleService;
 import com.springTemplateMaven.domain.vo.EmpVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,7 @@ public class SampleController {
     // パスを記載した場合、クラスで指定したパスの後ろに追加される
     // GET通信の場合、パスに引数が含まれるのでパスに名称を設定することで取得
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public EmpDto get( int id ) {
+    public EmpDto get( @PathVariable int id ) {
         return this.sampleService.get( id );
     }
 
@@ -59,7 +60,7 @@ public class SampleController {
     }
 
     @RequestMapping( value = "/delete/{id}", method = RequestMethod.DELETE)
-    public void delete( int id ) {
+    public void delete( @PathVariable int id ) {
         this.sampleService.delete( id );
     }
 }
