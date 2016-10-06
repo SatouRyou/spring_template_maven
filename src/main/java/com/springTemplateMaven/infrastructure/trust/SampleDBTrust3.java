@@ -3,8 +3,6 @@ package com.springTemplateMaven.infrastructure.trust;
 import com.springTemplateMaven.domain.dto.EmpDto;
 import com.springTemplateMaven.domain.trust.SampleTrust;
 import com.springTemplateMaven.domain.vo.EmpVo;
-import com.springTemplateMaven.infrastructure.entity.sampleDB2.UserEntity;
-import com.springTemplateMaven.infrastructure.entity.sampleDB2.key.UserKey;
 import com.springTemplateMaven.infrastructure.entity.sampleDB3.PersonEntity;
 import com.springTemplateMaven.infrastructure.repository.sampleDB3.PersonRepository;
 import org.springframework.beans.BeanUtils;
