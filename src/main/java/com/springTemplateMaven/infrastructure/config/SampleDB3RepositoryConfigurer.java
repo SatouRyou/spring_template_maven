@@ -16,22 +16,22 @@ import javax.sql.DataSource;
  * Created by teradashoutarou on 2016/10/03.
  */
 @Configuration
-@EnableJpaRepositories(entityManagerFactoryRef = "sampleDB2EntityManagerFactory",
-        transactionManagerRef = "sampleDB2TransactionManager",
-        basePackages = {"com.SpringTemplateMaven.infrastructures.repository.springTest2"})
-public class SampleDB2RepositoryConfigurer {
+@EnableJpaRepositories(entityManagerFactoryRef = "sampleDB3EntityManagerFactory",
+        transactionManagerRef = "sampleDB3TransactionManager",
+        basePackages = {"com.SpringTemplateMaven.infrastructures.repository.springTest3"})
+public class SampleDB3RepositoryConfigurer {
 
     /**
      * (定数)エンティティ・パッケージ
      * Entityとマスターをマッピングさせる設定
      * なのでDB毎にEntityはパッケージを分けて配置すること
      * */
-    private static final String ENTITY_PACKAGE = "com.springTemplateMaven.infrastructure.entity.sampleDB2";
+    private static final String ENTITY_PACKAGE = "com.springTemplateMaven.infrastructure.entity.sampleDB3";
     /**
      * (定数)データソース
      * Application.ymlに記載されている対応するdatasourceを記載する
      * */
-    private static final String DATASOURCE = "datasource-SpringDB2";
+    private static final String DATASOURCE = "datasource-SpringDB3";
 
     /**
      * JPAに対してトランザクションの設定を登録する処理
@@ -40,8 +40,8 @@ public class SampleDB2RepositoryConfigurer {
      * @return
      */
     @Bean
-    public PlatformTransactionManager sampleDB2TransactionManager() {
-        return new JpaTransactionManager( sampleDB2EntityManagerFactory().getObject() );
+    public PlatformTransactionManager sampleDB3TransactionManager() {
+        return new JpaTransactionManager( sampleDB3EntityManagerFactory().getObject() );
     }
     /**
      * JPAに登録する設定値を作成するメソッド
@@ -50,12 +50,12 @@ public class SampleDB2RepositoryConfigurer {
      * @return
      */
     @Bean
-    public LocalContainerEntityManagerFactoryBean sampleDB2EntityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean sampleDB3EntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         // 対象のDBの設定をセット
-        factoryBean.setDataSource( this.sampleDB2DataSource() );
+        factoryBean.setDataSource( this.sampleDB3DataSource() );
         // 対象のJPAの設定をセット
-        factoryBean.setJpaVendorAdapter( this.sampleDB2Adapter() );
+        factoryBean.setJpaVendorAdapter( this.sampleDB3Adapter() );
         // 対象のEntityを指定している
         factoryBean.setPackagesToScan( ENTITY_PACKAGE );
         return factoryBean;
@@ -69,7 +69,7 @@ public class SampleDB2RepositoryConfigurer {
      */
     @Bean
     @ConfigurationProperties(prefix = DATASOURCE)
-    public DataSource sampleDB2DataSource() {
+    public DataSource sampleDB3DataSource() {
         return DataSourceBuilder.create().build();
     }
     /**
@@ -77,7 +77,7 @@ public class SampleDB2RepositoryConfigurer {
      * @return
      */
     @Bean
-    public HibernateJpaVendorAdapter sampleDB2Adapter() {
+    public HibernateJpaVendorAdapter sampleDB3Adapter() {
         HibernateJpaVendorAdapter hibernateJpaVendorAdapter = new HibernateJpaVendorAdapter();
         // ログに発行されたSQLを表示
         hibernateJpaVendorAdapter.setShowSql( true );
