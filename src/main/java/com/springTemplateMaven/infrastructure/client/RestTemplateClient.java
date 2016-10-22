@@ -4,21 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.web.client.RestOperations;
-import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
 
 /**
  * Created by teradashoutarou on 2016/10/20.
  */
-public class RestTemplateClient implements Client {
+public class RestTemplateClient implements RestClient {
 
     @Autowired
     // RestTemplateを使用する際、インターフェースである
     // RestOperationsを使用した方が依存性を下げられる
     private RestOperations restOperations;
 
-    public RestTemplateClient() {
+    public void send() {
         // リクエストヘッダーを設定する際は、
         // RequestEntityのビルダーパターンで実装するのがベスト
         RequestEntity<String> requestEntity
