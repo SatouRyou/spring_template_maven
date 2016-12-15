@@ -1,0 +1,19 @@
+#テスト用の設定ファイル
+#mainの設定を本番用に設定していても、こちらを開発用に設定しておけば、
+#本番用の納品物を作成する時に走るテストは、こちらに設定された環境でのテストになる。
+
+spring:
+    profiles:
+        active: dev
+
+jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+        ddl-auto: none
+        naming:
+            strategy: org.hibernate.cfg.EJB3NamingStrategy
+
+management:
+    contextPath: /management
+    port: 8081
+    security.enabled: false

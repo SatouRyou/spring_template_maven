@@ -1,0 +1,23 @@
+datasource-SpringDB:
+    url: jdbc:mysql://localhost/SpringDB
+    username: db_user
+    password: db_password
+    driverClassName: com.postgresql.jdbc.Driver
+    validationQuery: select 1
+    testOnBorrow: true
+
+datasource-SpringDB2:
+    url: jdbc:mysql://localhost/SpringDB2
+    username: db_user
+    password: db_password
+    driverClassName: com.postgresql.jdbc.Driver
+    validationQuery: select 1
+    testOnBorrow: true
+
+datasource-SpringDB3:
+    url: jdbc:mysql://localhost/SpringDB3
+    username: db_user
+    password: db_password
+    driverClassName: com.postgresql.jdbc.Driver
+    validationQuery: select 1
+    testOnBorrow: true
